@@ -69,3 +69,31 @@ case $key in
 esac
 shift # past argument or value
 done
+
+EXTRA_VARS=""
+###############################################################################
+
+
+###############################################################################
+case "${TEST_SUITE}" in
+    bash)
+    BASE_FOLDER="/root/src"
+    EXTRA_VARS="-ti --entrypoint /bin/bash"
+    ;;
+    *)
+    BASE_FOLDER="/root/src/ui"
+    EXTRA_VARS=""        # unknown option
+    ;;
+
+esac
+
+
+if [ -z "${DEBUG}" ]; then  #  developers need to set to run their local image builds
+  if [ -f "${HOME}/data/image-tags.txt" ]; then
+      tag=$(grep abc ${HOME}/data/image-tags.txt | awk '{print $2}')
+      $HOME/bin/pull-image abc ${tag}
+  else
+      # Running in local filesystem
+      ${BASE_DIR}/pull-image abc latest
+  fi
+fi
