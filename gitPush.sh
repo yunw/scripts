@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# first time pull
+
+#git init
+#git remote add origin https://github.com/yunw/scripts.git
+
 # show remote repository
 git remote -v
 
