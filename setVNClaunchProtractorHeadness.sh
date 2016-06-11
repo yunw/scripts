@@ -54,7 +54,7 @@ startVNC() {
   sleep 5
   PARAMETER="SERVER_HOSTNAME=${SERVER_HOSTNAME} BROWSER=${BROWSER} DISPLAY_SIZE=${DISPLAY_SIZE}"
   echo "Parameter: ${PARAMETER}"
-  x11vnc -display "${DISPLAY}" -xkb -forever -shared -bg  -passwd tibco123 -autoport 5900 &
+  x11vnc -display "${DISPLAY}" -xkb -forever -shared -bg  -passwd t123 -autoport 5900 &
 }
 ###############################################################################
 showENV() {
